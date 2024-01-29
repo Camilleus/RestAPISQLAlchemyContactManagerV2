@@ -1,10 +1,12 @@
 from fastapi import FastAPI, HTTPException, Query, Depends
+from fastapi.security import OAuth2PasswordBearer
 from sqlalchemy.orm import Session
 from datetime import date, timedelta
-from models import Contact
+from models import Contact, User, Token
 from db import get_db, database
 from pydantic import BaseModel
 from typing import List
+from auth import get_current_active_user, login_for_access_token
 
 
 app = FastAPI()
@@ -94,3 +96,8 @@ def get_birthdays_within_7_days(db: Session = Depends(get_db)):
     ).all()
 
     return contacts
+
+
+@app.post("/token/", response_model=Token)
+async def login_for_access_token(form_data: OAuth2PasswordBearer = Depends()):
+    return login_for_access_token(form_data)
