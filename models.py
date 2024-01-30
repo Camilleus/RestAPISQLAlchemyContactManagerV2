@@ -1,31 +1,38 @@
 from sqlalchemy import Column, Integer, String, Date
 from sqlalchemy.ext.declarative import declarative_base
 from passlib.context import CryptContext
+from pydantic import BaseModel
 
 
 Base = declarative_base()
 
 
-class Contact(Base):
+class Contact(BaseModel):
     __tablename__ = "contacts"
 
-    id = Column(Integer, primary_key=True, index=True)
-    first_name = Column(String, index=True)
-    last_name = Column(String, index=True)
-    email = Column(String, unique=True, index=True)
-    phone_number = Column(String)
-    birth_date = Column(Date)
-    additional_data = Column(String, nullable=True)
+    id: int
+    first_name: str
+    last_name: str
+    email: str
+    phone_number: str
+    birth_date: Date
+    additional_data: str = None
 
+    class Config:
+        arbitrary_types_allowed = True
+        
 
-class Token(Base):
+class Token(BaseModel):
     __tablename__ = "tokens"
 
-    id = Column(Integer, primary_key=True, index=True)
-    access_token = Column(String, index=True)
-    token_type = Column(String)
+    id: int 
+    access_token: str
+    token_type: str
 
-
+    class Config:
+        arbitrary_types_allowed = True
+        
+        
 class User(Base):
     __tablename__ = "users"
 
@@ -33,5 +40,8 @@ class User(Base):
     username = Column(String, unique=True, index=True)
     hashed_password = Column(String)
 
+    class Config:
+        arbitrary_types_allowed = True
+        
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
