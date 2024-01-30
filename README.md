@@ -22,13 +22,15 @@ Czekamy na Twoje pull requesty!
 ## Struktura Projektu
 
 ```
-RestAPISQLAlchemyContactsManager
+RestAPISQLAlchemyContactManagerV2
+├─ .gitattributes
 ├─ api.py
+├─ auth.py
 ├─ contacts.db
+├─ data_faker.py
 ├─ data_for_db.sql
 ├─ data_sender.py
 ├─ db.py
-├─ data_faker.py
 ├─ main.py
 ├─ models.py
 ├─ README.md
