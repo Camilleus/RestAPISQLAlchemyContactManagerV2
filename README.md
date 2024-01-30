@@ -24,8 +24,7 @@ Nie potrzebuję ale spoko jeśli takie sie ukażą
 ## Struktura Projektu
 
 ```
-RestAPISQLAlchemyContactManagerV2
-├─ .gitattributes
+RestAPISQLAlchemyContactsManager
 ├─ api.py
 ├─ auth.py
 ├─ contacts.db
