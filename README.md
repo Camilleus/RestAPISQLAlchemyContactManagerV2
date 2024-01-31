@@ -24,7 +24,7 @@ Nie potrzebuję ale spoko jeśli takie sie ukażą
 ## Struktura Projektu
 
 ```
-RestAPISQLAlchemyContactsManager
+RestAPISQLAlchemyContactManagerV2
 ├─ api.py
 ├─ auth.py
 ├─ contacts.db
@@ -36,5 +36,10 @@ RestAPISQLAlchemyContactsManager
 ├─ models.py
 ├─ README.md
 ├─ requirements.txt
+├─ static
+│  └─ styles.css
+├─ templates
+│  ├─ base.html
+│  └─ index.html
 └─ __init__.py
 ```
