@@ -1,6 +1,6 @@
 # RestAPISQLalchemyContactsManager
 
-tutaj działa, w wolnym czasię uczę się MySQL (MySQL Workbench i XAMPP) i zmienię sqlite na mysql jak tylko będę wiedział na tiptop jak
+tutaj działa, używam tutaj MySQL i XAMPP'a
 
 ## Instalacja
 
@@ -25,17 +25,23 @@ Nie potrzebuję ale spoko jeśli takie sie ukażą
 
 ```
 RestAPISQLAlchemyContactManagerV2
+├─ .gitattributes
 ├─ api.py
 ├─ auth.py
+├─ config.py
 ├─ contacts.db
 ├─ data_faker.py
 ├─ data_for_db.sql
 ├─ data_sender.py
 ├─ db.py
+├─ jwt_utils.py
 ├─ main.py
 ├─ models.py
+├─ poetry.lock
+├─ pyproject.toml
 ├─ README.md
 ├─ requirements.txt
+├─ routes.py
 ├─ static
 │  └─ styles.css
 ├─ templates
