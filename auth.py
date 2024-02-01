@@ -5,14 +5,11 @@ from jose import JWTError, jwt
 from passlib.context import CryptContext
 from models import Token, User
 from fastapi import status
+from jwt_utils import create_jwt_token
+from config import SECRET_KEY, ALGORITHM, oauth2_scheme
 
 
-SECRET_KEY = "your_secret_key"
-ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 30
-
-
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
 
 
 def authenticate_user(username: str, password: str):
@@ -22,11 +19,7 @@ def authenticate_user(username: str, password: str):
 
 
 def create_access_token(data: dict, expires_delta: timedelta):
-    to_encode = data.copy()
-    expire = datetime.utcnow() + expires_delta
-    to_encode.update({"exp": expire})
-    encoded_jwt = jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
-    return encoded_jwt
+    return create_jwt_token(data, expires_delta)
 
 
 def login_for_access_token(form_data: OAuth2PasswordBearer = Depends()):
@@ -39,7 +32,7 @@ def login_for_access_token(form_data: OAuth2PasswordBearer = Depends()):
         )
 
     access_token_expires = timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
-    access_token = create_access_token(data={"sub": user.username}, expires_delta=access_token_expires)
+    access_token = create_jwt_token(data={"sub": user.username}, expires_delta=access_token_expires)
     return {"access_token": access_token, "token_type": "bearer"}
 
 

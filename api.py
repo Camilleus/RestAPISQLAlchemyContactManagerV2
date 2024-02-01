@@ -7,6 +7,7 @@ from db import get_db, database
 from pydantic import BaseModel
 from typing import List
 from auth import get_current_active_user, login_for_access_token
+from jwt_utils import decode_jwt_token
 
 
 app = FastAPI()
@@ -33,7 +34,7 @@ class ContactResponse(BaseModel):
     
 # CRUD operations
 @app.post("/contacts/", response_model=ContactResponse)
-async def create_contact(contact: ContactCreateUpdate):
+async def create_contact(contact: ContactCreateUpdate, current_user: User = Depends(get_current_active_user)):
     query = Contact.__table__.insert().values(**contact.dict())
     contact_id = await database.execute(query)
     return {"id": contact_id, **contact.dict()}
