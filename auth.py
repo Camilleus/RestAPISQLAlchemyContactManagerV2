@@ -5,7 +5,7 @@ from jose import JWTError, jwt
 from passlib.context import CryptContext
 from models import Token, User
 from fastapi import status
-from jwt_utils import create_jwt_token
+from jwt_utils import create_jwt_token, decode_jwt_token
 from config import SECRET_KEY, ALGORITHM, oauth2_scheme
 
 
@@ -34,6 +34,27 @@ def login_for_access_token(form_data: OAuth2PasswordBearer = Depends()):
     access_token_expires = timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
     access_token = create_jwt_token(data={"sub": user.username}, expires_delta=access_token_expires)
     return {"access_token": access_token, "token_type": "bearer"}
+
+
+def refresh_access_token(current_token: str = Depends(oauth2_scheme)):
+    credentials_exception = HTTPException(
+        status_code=status.HTTP_401_UNAUTHORIZED,
+        detail="Could not validate credentials",
+        headers={"WWW-Authenticate": "Bearer"},
+    )
+
+    try:
+        payload = decode_jwt_token(current_token)
+        sub = payload.get("sub")
+        if sub is None:
+            raise credentials_exception
+    except:
+        raise credentials_exception
+
+    access_token_expires = timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
+    refreshed_token = create_jwt_token(data={"sub": sub}, expires_delta=access_token_expires)
+
+    return {"access_token": refreshed_token, "token_type": "bearer"}
 
 
 def get_current_user(token: str = Depends(oauth2_scheme)):

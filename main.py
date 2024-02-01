@@ -7,13 +7,13 @@ from routes import router
 app = FastAPI()
 
 
+app.include_router(router)
+
+
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
 
 init_db()
-
-
-app.include_router(router)
 
 
 from api import ContactCreateUpdate, ContactResponse, Contact, create_contact, get_all_contacts, get_contact, update_contact, delete_contact, get_birthdays_within_7_days
@@ -22,3 +22,5 @@ from api import ContactCreateUpdate, ContactResponse, Contact, create_contact, g
 @app.get("/")
 def read_root():
     return {"message": "Hello, world!"}
+
+
