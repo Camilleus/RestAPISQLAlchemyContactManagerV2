@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
-from db.db import init_db
+from db.dbs import init_db
 from api.routes import router
 
 
@@ -16,7 +16,7 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 init_db()
 
 
-from api import ContactCreateUpdate, ContactResponse, Contact, create_contact, get_all_contacts, get_contact, update_contact, delete_contact, get_birthdays_within_7_days
+from api.apis import ContactCreateUpdate, ContactResponse, Contact, create_contact, get_all_contacts, get_contact, update_contact, delete_contact, get_birthdays_within_7_days
 
 
 @app.get("/")

@@ -5,7 +5,7 @@ from jose import JWTError, jwt
 from passlib.context import CryptContext
 from models import Token, User
 from fastapi import status
-from jwt_utils import create_jwt_token, decode_jwt_token
+from auth.jwts import create_jwt_token, decode_jwt_token
 from api.config import SECRET_KEY, ALGORITHM, oauth2_scheme
 
 

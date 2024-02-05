@@ -3,11 +3,11 @@ from fastapi.security import OAuth2PasswordBearer
 from sqlalchemy.orm import Session
 from datetime import date, timedelta
 from models import Contact, User, Token
-from db.db import get_db, database
+from db.dbs import get_db, database
 from pydantic import BaseModel
 from typing import List
-from auth import get_current_active_user, login_for_access_token
-from auth.jwt_utils import decode_jwt_token
+from auth.auths import get_current_active_user, login_for_access_token
+from auth.jwts import create_jwt_token, decode_jwt_token
 
 
 app = FastAPI()
