@@ -27,20 +27,23 @@ Nie potrzebuję ale spoko jeśli takie sie ukażą
 RestAPISQLAlchemyContactManagerV2
 ├─ .gitattributes
 ├─ api
-│  ├─ api.py
+│  ├─ apis.py
 │  ├─ config.py
-│  ├─ models.py
-│  └─ routes.py
+│  ├─ routes.py
+│  └─ __init__.py
 ├─ auth
-│  ├─ auth.py
-│  └─ jwt_utils.py
+│  ├─ auths.py
+│  ├─ jwts.py
+│  └─ __init__.py
 ├─ db
 │  ├─ contacts.db
 │  ├─ data_faker.py
 │  ├─ data_for_db.sql
 │  ├─ data_sender.py
-│  └─ db.py
+│  ├─ dbs.py
+│  └─ __init__.py
 ├─ main.py
+├─ models.py
 ├─ poetry.lock
 ├─ pyproject.toml
 ├─ README.md
@@ -49,6 +52,10 @@ RestAPISQLAlchemyContactManagerV2
 │  └─ styles.css
 ├─ templates
 │  ├─ base.html
-│  └─ index.html
+│  ├─ contacts.html
+│  ├─ index.html
+│  ├─ login,html
+│  ├─ register.html
+│  └─ verify.html
 └─ __init__.py
 ```
