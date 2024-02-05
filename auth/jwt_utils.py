@@ -1,7 +1,7 @@
 from datetime import datetime, timedelta
 from jose import JWTError, jwt
 from fastapi import Depends, HTTPException, status
-from config import SECRET_KEY, ALGORITHM, oauth2_scheme
+from api.config import SECRET_KEY, ALGORITHM, oauth2_scheme
 
 
 

@@ -1,5 +1,5 @@
 from fastapi import APIRouter, Depends, Request
-from auth import refresh_access_token
+from auth.auth import refresh_access_token
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 from db import init_db

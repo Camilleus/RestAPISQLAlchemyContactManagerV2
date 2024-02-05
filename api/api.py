@@ -6,8 +6,8 @@ from models import Contact, User, Token
 from db import get_db, database
 from pydantic import BaseModel
 from typing import List
-from auth import get_current_active_user, login_for_access_token
-from jwt_utils import decode_jwt_token
+from auth.auth import get_current_active_user, login_for_access_token
+from auth.jwt_utils import decode_jwt_token
 
 
 app = FastAPI()

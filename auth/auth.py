@@ -6,7 +6,7 @@ from passlib.context import CryptContext
 from models import Token, User
 from fastapi import status
 from jwt_utils import create_jwt_token, decode_jwt_token
-from config import SECRET_KEY, ALGORITHM, oauth2_scheme
+from api.config import SECRET_KEY, ALGORITHM, oauth2_scheme
 
 
 ACCESS_TOKEN_EXPIRE_MINUTES = 30

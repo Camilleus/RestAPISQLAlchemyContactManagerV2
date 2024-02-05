@@ -7,7 +7,7 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.11"
-fastapi = "^0.109.0"
+fastapi = {extras = ["all"], version = "^0.109.0"}
 uvicorn = {extras = ["standard"], version = "^0.27.0.post1"}
 datetime = "^5.4"
 sqlalchemy = "^2.0.25"
@@ -19,6 +19,7 @@ mysql = "^0.0.3"
 alembic = "^1.13.1"
 pymysql = "^1.1.0"
 mysql-connector-python = "^8.3.0"
+python-jose = "^3.3.0"
 
 
 [build-system]
