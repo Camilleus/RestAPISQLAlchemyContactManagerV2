@@ -1,10 +1,10 @@
 from fastapi import APIRouter, Depends, Request
-from auth.auth import refresh_access_token
+from auth import refresh_access_token
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
-from db import init_db
+from db.db import init_db
 from models import Token
-from api import ContactCreateUpdate, ContactResponse, Contact, create_contact, get_all_contacts, get_contact, update_contact, delete_contact, get_birthdays_within_7_days
+from api.api import ContactCreateUpdate, ContactResponse, Contact, create_contact, get_all_contacts, get_contact, update_contact, delete_contact, get_birthdays_within_7_days
 
 
 router = APIRouter()
