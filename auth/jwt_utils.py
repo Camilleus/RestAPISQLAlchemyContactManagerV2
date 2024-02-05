@@ -2,11 +2,9 @@ from datetime import datetime, timedelta
 from jose import JWTError, jwt
 from fastapi import Depends, HTTPException, status
 from api.config import SECRET_KEY, ALGORITHM, oauth2_scheme
-from typing import Union
 
 
-
-def create_jwt_token(data: dict, expires_delta: timedelta) -> str:
+def create_jwt_token(data: dict, expires_delta: timedelta):
     to_encode = data.copy()
     expire = datetime.utcnow() + expires_delta
     to_encode.update({"exp": expire})
@@ -14,7 +12,7 @@ def create_jwt_token(data: dict, expires_delta: timedelta) -> str:
     return encoded_jwt
 
 
-def decode_jwt_token(token: str = Depends(oauth2_scheme)) -> dict:
+def decode_jwt_token(token: str = Depends(oauth2_scheme)):
     credentials_exception = HTTPException(
         status_code=status.HTTP_401_UNAUTHORIZED,
         detail="Could not validate credentials",
@@ -25,3 +23,4 @@ def decode_jwt_token(token: str = Depends(oauth2_scheme)) -> dict:
         return payload
     except JWTError:
         raise credentials_exception
+    
