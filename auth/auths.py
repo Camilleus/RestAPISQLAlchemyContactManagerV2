@@ -1,12 +1,14 @@
-from fastapi import HTTPException, Depends
-from datetime import datetime, timedelta
+from fastapi import HTTPException, Depends, FastAPI
+from datetime import timedelta
 from fastapi.security import OAuth2PasswordBearer
 from jose import JWTError, jwt
-from passlib.context import CryptContext
 from models import Token, User
 from fastapi import status
 from auth.jwts import create_jwt_token, decode_jwt_token
 from api.config import SECRET_KEY, ALGORITHM, oauth2_scheme
+
+
+app = FastAPI()
 
 
 ACCESS_TOKEN_EXPIRE_MINUTES = 30
