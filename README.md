@@ -7,7 +7,7 @@ tutaj działa, używam tutaj MySQL i XAMPP'a
 1. Sklonuj repozytorium: `git clone https://github.com/Camilleus/RestAPISQLalchemyContactsManagerV2.git`
 2. Przejdź do folderu projektu: `cd RestAPISQLalchemyContactsManagerV2`
 3. Zainstaluj zależności: `poetry install`
-4. Uruchom serwer: `poetry run python main.py`
+4. Uruchom serwer: `uvicorn main:app --host localhost --port 8000 --reload`
 
 ## Requirements
 
