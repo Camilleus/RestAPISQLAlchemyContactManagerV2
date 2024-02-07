@@ -1,11 +1,15 @@
 from fastapi import FastAPI, Request
 from fastapi.templating import Jinja2Templates
+from typing import Dict
 
 
 app = FastAPI()
 
 
 templates = Jinja2Templates(directory="templates")
+
+
+users_db: Dict[str, Dict[str, str]] = {}
 
 
 @app.get("/")
