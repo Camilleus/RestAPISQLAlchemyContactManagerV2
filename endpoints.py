@@ -37,3 +37,7 @@ def register_user(request: Request):
 def read_contacts(request: Request):
     return templates.TemplateResponse("contacts.html", {"request": request})
 
+
+@app.get("/welcome")
+def welcome(request: Request):
+    return templates.TemplateResponse("welcome.html", {"request": request})
